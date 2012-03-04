@@ -19,6 +19,7 @@
     , t = true
     , ie = /msie/i.test(ua)
     , chrome = /chrome/i.test(ua)
+    , chromeMobile = /CrMo/i.test(ua)
     , safari = /safari/i.test(ua) && !chrome
     , iphone = /iphone/i.test(ua)
     , ipad = /ipad/i.test(ua)
@@ -41,6 +42,12 @@
       , chrome: t
       , version: ua.match(/chrome\/(\d+(\.\d+)?)/i)[1]
     }
+    if (chromeMobile) return {
+          webkit: t,
+          chrome: t,
+          mobile: t,
+          version: ua.match(/CrMo\/(\d+(\.\d+)?)/i)[1]
+      }
     if (iphone || ipad) {
       o = {
           webkit: t
